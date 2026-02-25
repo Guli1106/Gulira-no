@@ -3,108 +3,126 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Modern Animation</title>
+<title>Mening sahifam</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: Arial, sans-serif;
-}
-
+/* Umumiy */
+*{margin:0;padding:0;box-sizing:border-box;font-family: Arial,sans-serif;}
 body{
-    height:100vh;
+    min-height:100vh;
+    background: url('https://upload.wikimedia.org/wikipedia/commons/6/6b/Kinder_Chocolate_Bar.jpg');
+    background-size: 200px 100px;
+    background-repeat: repeat;
     display:flex;
-    justify-content:center;
+    flex-direction:column;
     align-items:center;
-    background: linear-gradient(135deg,#667eea,#764ba2);
-    overflow:hidden;
-}
-
-/* Orqa fondagi harakatlanuvchi doiralar */
-.circle{
-    position:absolute;
-    border-radius:50%;
-    background:rgba(255,255,255,0.1);
-    animation: float 10s infinite linear;
-}
-
-.circle:nth-child(1){
-    width:200px;
-    height:200px;
-    top:10%;
-    left:20%;
-}
-
-.circle:nth-child(2){
-    width:300px;
-    height:300px;
-    bottom:10%;
-    right:15%;
-    animation-duration:15s;
-}
-
-@keyframes float{
-    0%{transform:translateY(0);}
-    50%{transform:translateY(-40px);}
-    100%{transform:translateY(0);}
-}
-
-/* Kartochka */
-.card{
-    position:relative;
-    background:rgba(255,255,255,0.15);
-    padding:40px;
-    border-radius:20px;
-    text-align:center;
     color:white;
-    backdrop-filter: blur(10px);
-    animation: fadeIn 2s ease;
+    overflow-x:hidden;
 }
 
-@keyframes fadeIn{
-    from{opacity:0; transform:scale(0.8);}
-    to{opacity:1; transform:scale(1);}
+/* Navigatsiya */
+nav{
+    display:flex;
+    gap:20px;
+    background: rgba(0,0,0,0.6);
+    padding:15px 0;
+    width:100%;
+    justify-content:center;
+    position: sticky;
+    top:0;
+    z-index:10;
+}
+nav button{
+    background:none;
+    border:none;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+nav button:hover{
+    color:#ffcc70;
 }
 
-.card h1{
-    font-size:35px;
-    margin-bottom:15px;
+/* Sahifa konteyneri */
+.section{
+    max-width:900px;
+    margin:50px auto;
+    padding:30px;
+    text-align:center;
+    background: rgba(0,0,0,0.5);
+    border-radius:25px;
+    display:none;
+    animation: fade 1.5s ease;
 }
 
-.card p{
-    margin-bottom:25px;
-    font-size:18px;
+.section.active{
+    display:block;
 }
 
-button{
+h1{font-size:40px;margin-bottom:15px;}
+p{font-size:18px;margin-bottom:20px;}
+button.main-btn{
     padding:12px 25px;
     border:none;
     border-radius:25px;
-    background:white;
+    background:#ffcc70;
     color:#333;
     font-size:16px;
     cursor:pointer;
     transition:0.3s;
 }
-
-button:hover{
+button.main-btn:hover{
     transform:scale(1.1);
+}
+
+/* Animatsiya */
+@keyframes fade{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
 }
 </style>
 
 </head>
 <body>
 
-<div class="circle"></div>
-<div class="circle"></div>
+<nav>
+    <button onclick="showSection('home')">Bosh sahifa</button>
+    <button onclick="showSection('about')">Men haqimda</button>
+    <button onclick="showSection('contact')">Aloqa</button>
+</nav>
 
-<div class="card">
-    <h1>Salom Guli 🌸</h1>
-    <p>Bu zamonaviy animatsiyali veb sahifa</p>
-    <button onclick="alert('Sayt ishladi 😊')">Bos</button>
+<!-- Bosh sahifa -->
+<div id="home" class="section active">
+    <h1>Salom, Guli 🌸</h1>
+    <p>Bu mening shaxsiy animatsiyali veb-saytim.</p>
+    <button class="main-btn" onclick="alert('Saytga xush kelibsiz!')">Bos meni</button>
 </div>
+
+<!-- Men haqimda -->
+<div id="about" class="section">
+    <h1>Guli 🌸</h1>
+    <p>Men Axborot tizimlari va texnologiyalari talabasi.</p>
+    <p>Kindir shokoladni juda yoqtiraman 🍫</p>
+    <p>Hozir veb-saytlar va animatsiyalar yaratishga qiziqaman.</p>
+</div>
+
+<!-- Aloqa -->
+<div id="contact" class="section">
+    <h1>Aloqa</h1>
+    <p>Email: <strong>sadullayevagulirano06@gmail.com</strong></p>
+    <p>Telefon: <strong>+998 90 123 45 67</strong></p>
+    <button class="main-btn" onclick="alert('Rahmat, siz bilan tez orada bog‘lanamiz!')">Yuborish</button>
+</div>
+
+<script>
+function showSection(id){
+    document.querySelectorAll('.section').forEach(sec=>{
+        sec.classList.remove('active');
+    });
+    document.getElementById(id).classList.add('active');
+}
+</script>
 
 </body>
 </html>
