@@ -3,47 +3,77 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mening Sahifam</title>
+<title>Mening sahifam</title>
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
 }
 
+/* Orqa fon – ko‘p Kindir rasmi */
 body{
     min-height:100vh;
-    background: linear-gradient(135deg,#ff758c,#ff7eb3);
-    overflow:hidden;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/6/6b/Kinder_Chocolate_Bar.jpg");
+    background-size: 150px;
+    background-repeat: repeat;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
     color:white;
 }
 
-/* Harakatlanuvchi shokoladlar */
-.chocolate{
-    position:absolute;
-    font-size:30px;
-    animation: float 10s linear infinite;
+/* Qoraytirilgan overlay */
+.overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.7);
+    z-index:-1;
 }
 
-@keyframes float{
-    0%{
-        transform: translateY(100vh) rotate(0deg);
-        opacity:1;
-    }
-    100%{
-        transform: translateY(-10vh) rotate(360deg);
-        opacity:0;
-    }
+/* Navigatsiya */
+nav{
+    width:100%;
+    background:rgba(0,0,0,0.8);
+    padding:15px 0;
+    display:flex;
+    justify-content:center;
+    gap:30px;
 }
 
-/* Kontent qismi */
-.container{
-    position:relative;
-    z-index:10;
+nav button{
+    background:none;
+    border:none;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+nav button:hover{
+    color:#ffcc70;
+}
+
+/* Kartochka */
+.section{
+    max-width:900px;
+    margin:60px 20px;
+    padding:40px;
+    background:rgba(255,255,255,0.1);
+    border-radius:25px;
     text-align:center;
-    margin-top:150px;
+    backdrop-filter: blur(8px);
+    display:none;
+    animation: fadeIn 1s ease;
+}
+
+.section.active{
+    display:block;
 }
 
 h1{
@@ -56,39 +86,71 @@ p{
     margin-bottom:20px;
 }
 
-button{
-    padding:12px 25px;
+.main-btn{
+    padding:12px 30px;
     border:none;
-    border-radius:25px;
-    background:white;
+    border-radius:30px;
+    background:#ffcc70;
     color:#333;
+    font-size:16px;
     cursor:pointer;
     transition:0.3s;
 }
 
-button:hover{
+.main-btn:hover{
     transform:scale(1.1);
+}
+
+/* Animatsiya */
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
 }
 </style>
 </head>
 
 <body>
 
-<!-- Harakatlanuvchi shokoladlar -->
-<div class="chocolate" style="left:10%; animation-duration:8s;">🍫</div>
-<div class="chocolate" style="left:25%; animation-duration:12s;">🍫</div>
-<div class="chocolate" style="left:40%; animation-duration:10s;">🍫</div>
-<div class="chocolate" style="left:60%; animation-duration:14s;">🍫</div>
-<div class="chocolate" style="left:75%; animation-duration:9s;">🍫</div>
-<div class="chocolate" style="left:90%; animation-duration:11s;">🍫</div>
+<div class="overlay"></div>
 
-<!-- Asosiy ma'lumot -->
-<div class="container">
-    <h1>Salom Guli 🌸</h1>
-    <p>Men Axborot tizimlari va texnologiyalari talabasi</p>
-    <p>Sevimli shirinligim — Kindir 🍫</p>
-    <button onclick="alert('Kindir time 😄')">Bos meni</button>
+<nav>
+    <button onclick="show('home')">Bosh sahifa</button>
+    <button onclick="show('about')">Men haqimda</button>
+    <button onclick="show('contact')">Aloqa</button>
+</nav>
+
+<!-- Bosh sahifa -->
+<div id="home" class="section active">
+    <h1>Salom, Guli 🌸</h1>
+    <p>Bu mening shaxsiy animatsiyali veb-sahifam.</p>
+    <button class="main-btn" onclick="alert('Sayt ishladi 😊')">Bos meni</button>
 </div>
+
+<!-- Men haqimda -->
+<div id="about" class="section">
+    <h1>Men haqimda</h1>
+    <p>Ismim: Gulira'no (Guli 🌸)</p>
+    <p>Yo‘nalishim: Axborot tizimlari va texnologiyalari</p>
+    <p>Sevimli shirinligim: Kindir shokolad 🍫</p>
+    <p>Qiziqishim: Veb dizayn va animatsiya yaratish</p>
+</div>
+
+<!-- Aloqa -->
+<div id="contact" class="section">
+    <h1>Aloqa</h1>
+    <p>Email: sadullayevagulirano06@gmail.com</p>
+    <p>Manzil: O‘zbekiston</p>
+    <button class="main-btn" onclick="alert('Rahmat Guli 💖')">Bog‘lanish</button>
+</div>
+
+<script>
+function show(id){
+    document.querySelectorAll('.section').forEach(sec=>{
+        sec.classList.remove('active');
+    });
+    document.getElementById(id).classList.add('active');
+}
+</script>
 
 </body>
 </html>
