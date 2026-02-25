@@ -1,68 +1,156 @@
-<!DOCTYPE html>
-<html>
+index.html
+about.html
+contact.html<!DOCTYPE html>
+<html lang="uz">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guli Sahifasi</title>
-
+<title>Guli | Bosh sahifa</title>
 <style>
 body{
     margin:0;
-    background:#ff7eb3;
-    overflow:hidden;
     font-family:Arial;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3);
     color:white;
     text-align:center;
 }
-
-/* Shokolad animatsiyasi */
-.choco{
-    position:absolute;
-    font-size:30px;
-    animation:move 10s linear infinite;
+nav{
+    background:#222;
+    padding:15px;
 }
-
-@keyframes move{
-    0%{transform:translateY(100vh);}
-    100%{transform:translateY(-10vh);}
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
 }
-
-/* Kontent */
+nav a:hover{color:#ffcc70;}
 .container{
-    position:relative;
-    z-index:10;
-    margin-top:120px;
+    padding:80px 20px;
 }
-
 button{
     padding:10px 20px;
     border:none;
     border-radius:20px;
-    background:white;
     cursor:pointer;
 }
 </style>
 </head>
-
 <body>
 
-<!-- 15 ta shokolad -->
-<div class="choco" style="left:5%;">🍫</div>
-<div class="choco" style="left:15%; animation-duration:8s;">🍫</div>
-<div class="choco" style="left:25%; animation-duration:12s;">🍫</div>
-<div class="choco" style="left:35%; animation-duration:9s;">🍫</div>
-<div class="choco" style="left:45%; animation-duration:14s;">🍫</div>
-<div class="choco" style="left:55%; animation-duration:7s;">🍫</div>
-<div class="choco" style="left:65%; animation-duration:11s;">🍫</div>
-<div class="choco" style="left:75%; animation-duration:10s;">🍫</div>
-<div class="choco" style="left:85%; animation-duration:13s;">🍫</div>
-<div class="choco" style="left:95%; animation-duration:6s;">🍫</div>
+<nav>
+<a href="index.html">Bosh sahifa</a>
+<a href="about.html">Men haqimda</a>
+<a href="contact.html">Aloqa</a>
+</nav>
 
 <div class="container">
-    <h1>Salom Guli 🌸</h1>
-    <p>Men Axborot tizimlari talabasi</p>
-    <p>Sevimli shirinligim — Kindir 🍫</p>
-    <button onclick="alert('Ishladi 😊')">Bos meni</button>
+<h1>Salom Guli 🌸</h1>
+<p>Bu mening shaxsiy ko‘p sahifali saytim</p>
+<button onclick="alert('Xush kelibsiz!')">Bos</button>
+</div>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guli | Men haqimda</title>
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background:linear-gradient(135deg,#667eea,#764ba2);
+    color:white;
+    text-align:center;
+}
+nav{
+    background:#222;
+    padding:15px;
+}
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
+}
+nav a:hover{color:#ffcc70;}
+.container{
+    padding:80px 20px;
+}
+</style>
+</head>
+<body>
+
+<nav>
+<a href="index.html">Bosh sahifa</a>
+<a href="about.html">Men haqimda</a>
+<a href="contact.html">Aloqa</a>
+</nav>
+
+<div class="container">
+<h1>Men haqimda 🌸</h1>
+<p>Ismim: Gulira'no</p>
+<p>Yo‘nalishim: Axborot tizimlari va texnologiyalari</p>
+<p>Sevimli shirinligim: Kindir 🍫</p>
+</div>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guli | Aloqa</title>
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background:linear-gradient(135deg,#11998e,#38ef7d);
+    color:white;
+    text-align:center;
+}
+nav{
+    background:#222;
+    padding:15px;
+}
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
+}
+nav a:hover{color:#ffcc70;}
+.container{
+    padding:80px 20px;
+}
+input,textarea{
+    padding:10px;
+    width:250px;
+    border-radius:10px;
+    border:none;
+}
+button{
+    padding:10px 20px;
+    border:none;
+    border-radius:20px;
+    margin-top:10px;
+    cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<nav>
+<a href="index.html">Bosh sahifa</a>
+<a href="about.html">Men haqimda</a>
+<a href="contact.html">Aloqa</a>
+</nav>
+
+<div class="container">
+<h1>Aloqa 📞</h1>
+<p>Email: sadullayevagulirano06@gmail.com</p>
+<input placeholder="Ismingiz"><br><br>
+<textarea placeholder="Xabar yozing"></textarea><br>
+<button>Yuborish</button>
 </div>
 
 </body>
