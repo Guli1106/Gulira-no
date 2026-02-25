@@ -3,144 +3,165 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mening sahifam</title>
+<title>Guli Portfolio</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: 'Segoe UI', sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
 
-/* Orqa fon – ko‘p Kindir rasmi */
 body{
     min-height:100vh;
-    background-image: url("https://upload.wikimedia.org/wikipedia/commons/6/6b/Kinder_Chocolate_Bar.jpg");
-    background-size: 150px;
-    background-repeat: repeat;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+    background: linear-gradient(135deg,#ff758c,#ff7eb3);
+    overflow:hidden;
     color:white;
 }
 
-/* Qoraytirilgan overlay */
-.overlay{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.7);
-    z-index:-1;
+/* Harakatlanuvchi shokoladlar */
+.chocolate{
+    position:absolute;
+    font-size:28px;
+    animation: float linear infinite;
+}
+
+@keyframes float{
+    0%{transform: translateY(100vh) rotate(0deg); opacity:1;}
+    100%{transform: translateY(-10vh) rotate(360deg); opacity:0;}
 }
 
 /* Navigatsiya */
 nav{
+    position:fixed;
+    top:0;
     width:100%;
-    background:rgba(0,0,0,0.8);
-    padding:15px 0;
+    background:rgba(0,0,0,0.7);
     display:flex;
     justify-content:center;
-    gap:30px;
+    gap:25px;
+    padding:15px;
+    z-index:100;
 }
 
 nav button{
     background:none;
     border:none;
     color:white;
-    font-size:18px;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-nav button:hover{
-    color:#ffcc70;
-}
-
-/* Kartochka */
-.section{
-    max-width:900px;
-    margin:60px 20px;
-    padding:40px;
-    background:rgba(255,255,255,0.1);
-    border-radius:25px;
-    text-align:center;
-    backdrop-filter: blur(8px);
-    display:none;
-    animation: fadeIn 1s ease;
-}
-
-.section.active{
-    display:block;
-}
-
-h1{
-    font-size:40px;
-    margin-bottom:20px;
-}
-
-p{
-    font-size:20px;
-    margin-bottom:20px;
-}
-
-.main-btn{
-    padding:12px 30px;
-    border:none;
-    border-radius:30px;
-    background:#ffcc70;
-    color:#333;
     font-size:16px;
     cursor:pointer;
     transition:0.3s;
 }
 
-.main-btn:hover{
-    transform:scale(1.1);
+nav button:hover{color:#ffcc70;}
+
+/* Sahifalar */
+.section{
+    display:none;
+    text-align:center;
+    margin-top:120px;
+    padding:30px;
+    animation: fade 1s ease;
 }
 
-/* Animatsiya */
-@keyframes fadeIn{
+.section.active{display:block;}
+
+@keyframes fade{
     from{opacity:0; transform:translateY(20px);}
     to{opacity:1; transform:translateY(0);}
 }
+
+h1{margin-bottom:20px;font-size:38px;}
+p{margin-bottom:15px;font-size:18px;}
+
+.card{
+    background:rgba(255,255,255,0.15);
+    padding:30px;
+    border-radius:20px;
+    backdrop-filter: blur(10px);
+    max-width:800px;
+    margin:auto;
+}
+
+button.main-btn{
+    padding:10px 20px;
+    border:none;
+    border-radius:25px;
+    background:white;
+    color:#333;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button.main-btn:hover{transform:scale(1.1);}
 </style>
 </head>
 
 <body>
 
-<div class="overlay"></div>
+<!-- Shokoladlar -->
+<script>
+for(let i=0;i<25;i++){
+    let choco=document.createElement("div");
+    choco.className="chocolate";
+    choco.innerHTML="🍫";
+    choco.style.left=Math.random()*100+"%";
+    choco.style.animationDuration=(6+Math.random()*8)+"s";
+    document.body.appendChild(choco);
+}
+</script>
 
 <nav>
     <button onclick="show('home')">Bosh sahifa</button>
     <button onclick="show('about')">Men haqimda</button>
+    <button onclick="show('skills')">Ko‘nikmalar</button>
+    <button onclick="show('projects')">Loyihalar</button>
     <button onclick="show('contact')">Aloqa</button>
 </nav>
 
 <!-- Bosh sahifa -->
 <div id="home" class="section active">
-    <h1>Salom, Guli 🌸</h1>
-    <p>Bu mening shaxsiy animatsiyali veb-sahifam.</p>
-    <button class="main-btn" onclick="alert('Sayt ishladi 😊')">Bos meni</button>
+    <div class="card">
+        <h1>Salom Guli 🌸</h1>
+        <p>Bu mening kengaytirilgan animatsiyali veb-saytim.</p>
+        <button class="main-btn" onclick="alert('Xush kelibsiz! 🍫')">Bos meni</button>
+    </div>
 </div>
 
 <!-- Men haqimda -->
 <div id="about" class="section">
-    <h1>Men haqimda</h1>
-    <p>Ismim: Gulira'no (Guli 🌸)</p>
-    <p>Yo‘nalishim: Axborot tizimlari va texnologiyalari</p>
-    <p>Sevimli shirinligim: Kindir shokolad 🍫</p>
-    <p>Qiziqishim: Veb dizayn va animatsiya yaratish</p>
+    <div class="card">
+        <h1>Men haqimda</h1>
+        <p>Ismim: Gulira'no (Guli)</p>
+        <p>Yo‘nalishim: Axborot tizimlari va texnologiyalari</p>
+        <p>Sevimli shirinligim: Kindir 🍫</p>
+    </div>
+</div>
+
+<!-- Ko‘nikmalar -->
+<div id="skills" class="section">
+    <div class="card">
+        <h1>Ko‘nikmalarim</h1>
+        <p>✔️ HTML</p>
+        <p>✔️ CSS</p>
+        <p>✔️ JavaScript (o‘rganayapman)</p>
+    </div>
+</div>
+
+<!-- Loyihalar -->
+<div id="projects" class="section">
+    <div class="card">
+        <h1>Loyihalarim</h1>
+        <p>🍫 Shokolad animatsiyali sayt</p>
+        <p>🌸 Portfolio dizayn</p>
+        <p>💻 O‘quv loyihalar</p>
+    </div>
 </div>
 
 <!-- Aloqa -->
 <div id="contact" class="section">
-    <h1>Aloqa</h1>
-    <p>Email: sadullayevagulirano06@gmail.com</p>
-    <p>Manzil: O‘zbekiston</p>
-    <button class="main-btn" onclick="alert('Rahmat Guli 💖')">Bog‘lanish</button>
+    <div class="card">
+        <h1>Aloqa</h1>
+        <p>Email: sadullayevagulirano06@gmail.com</p>
+        <p>O‘zbekiston</p>
+        <button class="main-btn" onclick="alert('Rahmat Guli 💖')">Bog‘lanish</button>
+    </div>
 </div>
 
 <script>
