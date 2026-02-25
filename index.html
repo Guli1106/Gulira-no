@@ -3,85 +3,107 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chiroyli Manzara</title>
+<title>Modern Animation</title>
 
 <style>
-body{
+*{
     margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
     height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(135deg,#667eea,#764ba2);
     overflow:hidden;
-    background: linear-gradient(to top, #1e3c72, #2a5298);
+}
+
+/* Orqa fondagi harakatlanuvchi doiralar */
+.circle{
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,255,255,0.1);
+    animation: float 10s infinite linear;
+}
+
+.circle:nth-child(1){
+    width:200px;
+    height:200px;
+    top:10%;
+    left:20%;
+}
+
+.circle:nth-child(2){
+    width:300px;
+    height:300px;
+    bottom:10%;
+    right:15%;
+    animation-duration:15s;
+}
+
+@keyframes float{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-40px);}
+    100%{transform:translateY(0);}
+}
+
+/* Kartochka */
+.card{
     position:relative;
-}
-
-/* Quyosh */
-.sun{
-    position:absolute;
-    width:120px;
-    height:120px;
-    background: radial-gradient(circle, #ffdd55, #ff9900);
-    border-radius:50%;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    animation: moveSun 10s linear infinite;
-}
-
-/* Bulut */
-.cloud{
-    position:absolute;
-    width:150px;
-    height:60px;
-    background:white;
-    border-radius:50px;
-    top:20%;
-    left:-200px;
-    animation: moveCloud 20s linear infinite;
-}
-
-.cloud:before{
-    content:"";
-    position:absolute;
-    width:80px;
-    height:80px;
-    background:white;
-    border-radius:50%;
-    top:-40px;
-    left:20px;
-}
-
-@keyframes moveSun{
-    0%{ top:80%; }
-    50%{ top:20%; }
-    100%{ top:80%; }
-}
-
-@keyframes moveCloud{
-    0%{ left:-200px; }
-    100%{ left:110%; }
-}
-
-/* Matn */
-.text{
-    position:absolute;
-    bottom:40px;
-    width:100%;
+    background:rgba(255,255,255,0.15);
+    padding:40px;
+    border-radius:20px;
     text-align:center;
     color:white;
-    font-size:30px;
-    font-family:sans-serif;
+    backdrop-filter: blur(10px);
+    animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:scale(0.8);}
+    to{opacity:1; transform:scale(1);}
+}
+
+.card h1{
+    font-size:35px;
+    margin-bottom:15px;
+}
+
+.card p{
+    margin-bottom:25px;
+    font-size:18px;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:25px;
+    background:white;
+    color:#333;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.1);
 }
 </style>
-</head>
 
+</head>
 <body>
 
-<div class="sun"></div>
-<div class="cloud"></div>
+<div class="circle"></div>
+<div class="circle"></div>
 
-<div class="text">
-    Salom Guli 🌸 <br>
-    Animatsiyali manzara sahifa
+<div class="card">
+    <h1>Salom Guli 🌸</h1>
+    <p>Bu zamonaviy animatsiyali veb sahifa</p>
+    <button onclick="alert('Sayt ishladi 😊')">Bos</button>
 </div>
 
 </body>
