@@ -1,244 +1,197 @@
-𝔹𝕒𝕩𝕥𝕚𝕪𝕠𝕣𝕠𝕧𝕟𝕒, [25-02-2026 19:20]
+𝔹𝕒𝕩𝕥𝕚𝕪𝕠𝕣𝕠𝕧𝕟𝕒, [25-02-2026 19:32]
 <!DOCTYPE html>
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gulira'no Baxtiyorovna | Shaxsiy Koinot</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Gulira'no Baxtiyorovna | Shaxsiy Sahifa</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <style>
-        /* ASOSIY SOZLAMALAR */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            color: #ffffff;
-            overflow-x: hidden;
-            /* ORQA FONDA KINDIR (KOINOT) RASMI */
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                        url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=2072') no-repeat center center fixed;
+            /* ORQA FONGA KINDER SHOKOLADI RASMI */
+            background: url('https://images.unsplash.com/photo-1511381939415-e44015466834?q=80&w=2000') no-repeat center center fixed;
             background-size: cover;
+            scroll-behavior: smooth;
+            color: #444;
         }
 
-        /* NAVIGATION BAR */
+        /* Navigatsiya Menyusi */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            height: 70px;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
             display: flex;
             justify-content: center;
-            align-items: center;
+            padding: 15px 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         nav a {
-            color: #fff;
             text-decoration: none;
+            color: #d32f2f; /* Kinder qizil rangi */
             margin: 0 15px;
-            font-size: 13px;
-            letter-spacing: 1px;
+            font-weight: bold;
+            font-size: 14px;
             text-transform: uppercase;
-            transition: 0.3s;
         }
 
-        nav a:hover {
-            color: #00d2ff;
-        }
-
-        /* SECTION TUZILMASI */
+        /* Sahifa tuzilishi */
         section {
             min-height: 100vh;
-            padding: 100px 20px;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            padding: 100px 20px;
         }
 
-        .content-box {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            padding: 50px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            max-width: 900px;
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 25px;
+            max-width: 800px;
             width: 100%;
             text-align: center;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 2px solid #d32f2f;
         }
 
-        h1 {
-            font-size: 2.5rem;
+        h1, h2 {
+            color: #d32f2f;
             margin-bottom: 20px;
-            color: #00d2ff;
-            text-transform: uppercase;
-        }
-
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 30px;
-            color: #3a7bd5;
         }
 
         p {
-            font-size: 1.1rem;
             line-height: 1.8;
-            margin-bottom: 20px;
-            color: #ddd;
+            font-size: 17px;
+            margin-bottom: 10px;
         }
 
-        /* SAHIFALAR UCHUN MAHSUS ELEMENTLAR */
-        .grid-container {
+        /* Sahifalar uchun maxsus uslublar */
+        .info-box { text-align: left; margin: 20px 0; }
+        .info-box i { color: #d32f2f; margin-right: 10px; width: 25px; }
+
+        .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
         }
 
-        .grid-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
+        .gallery-item {
+            height: 150px;
+            background: #f0f0f0;
             border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed #ccc;
+        }
+
+        .music-list { list-style: none; text-align: left; }
+        .music-list li {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+
+        .music-list i { margin-right: 15px; color: #d32f2f; }
+
+        .contact-btn {
+            display: block;
+            margin: 10px auto;
+            padding: 15px;
+            width: 250px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
             transition: 0.3s;
         }
 
-        .grid-item:hover {
-            background: rgba(0, 210, 255, 0.2);
-            transform: translateY(-10px);
-        }
+        .tg { background: #0088cc; }
+        .inst { background: #e1306c; }
+        .mail { background: #d32f2f; }
 
-        /* ALOQA TUGMALARI */
-        .social-link {
-            display: inline-block;
-            margin: 15px;
-            font-size: 2rem;
-            color: #fff;
-            transition: 0.3s;
-        }
+        .contact-btn:hover { transform: scale(1.05); opacity: 0.9; }
 
-        .social-link:hover {
-            color: #00d2ff;
-            transform: scale(1.2);
-        }
-
-        footer {
-            padding: 30px;
-            text-align: center;
-            background: rgba(0,0,0,0.9);
-            font-size: 0.9rem;
-        }
     </style>
 </head>
 <body>
 
-𝔹𝕒𝕩𝕥𝕚𝕪𝕠𝕣𝕠𝕧𝕟𝕒, [25-02-2026 19:20]
-<nav>
-        <a href="#home">Asosiy</a>
-        <a href="#about">Haqimda</a>
-        <a href="#ai">AI Loyihalar</a>
-        <a href="#library">Mutolaa</a>
-        <a href="#articles">Maqolalar</a>
-        <a href="#world">Mening Dunyoim</a>
+    <nav>
+        <a href="#home">Bosh sahifa</a>
+        <a href="#interests">Qiziqishlar</a>
+        <a href="#gallery">Galereya</a>
+        <a href="#music">Qo'shiqlar</a>
         <a href="#contact">Aloqa</a>
     </nav>
 
-    <section id="home">
-        <div class="content-box">
-            <h1>Gulira‘no Baxtiyorovna</h1>
-            <p>Sa‘dullayeva Gulira‘no - Kelajak texnologiyalari va koinot kabi cheksiz imkoniyatlar olamiga xush kelibsiz.</p>
-            <i class="fas fa-rocket fa-3x" style="color: #00d2ff; margin-top: 20px;"></i>
-        </div>
-    </section>
-
-    <section id="about">
-        <div class="content-box">
-            <h2>Men haqimda</h2>
-            <p>Men Sa'dullayeva Gulira'no Baxtiyorovna, Qashqadaryo farzandiman. Kompyuter injiniringi yo'nalishida tahsil olaman. Mening maqsadim faqat kod yozish emas, balki sun'iy intellekt orqali insoniyat muammolariga yechim topishdir.</p>
-            <p>Har bir yozgan kodim - mening dunyoqarashimning bir bo'lagidir.</p>
-        </div>
-    </section>
-
-    <section id="ai">
-        <div class="content-box">
-            <h2>AI Loyihalarim</h2>
-            <div class="grid-container">
-                <div class="grid-item">
-                    <i class="fas fa-brain fa-2x"></i>
-                    <h3>Ball Tracker</h3>
-                    <p>Sport o'yinlaridagi to'plarni real vaqtda aniqlash tizimi.</p>
-                </div>
-                <div class="grid-item">
-                    <i class="fas fa-robot fa-2x"></i>
-                    <h3>Chatbot Engine</h3>
-                    <p>Tabiiy tilni qayta ishlovchi aqlli yordamchi.</p>
-                </div>
+𝔹𝕒𝕩𝕥𝕚𝕪𝕠𝕣𝕠𝕧𝕟𝕒, [25-02-2026 19:32]
+<section id="home">
+        <div class="container">
+            <h1>Sa‘dullayeva Gulira‘no Baxtiyorovna</h1>
+            <div class="info-box">
+                <p><i class="fas fa-map-marker-alt"></i> <b>Manzil:</b> Qashqadaryo viloyati, Nishon tumani</p>
+                <p><i class="fas fa-university"></i> <b>O'qish:</b> Qarshi davlat Universiteti, Matematika va kompyuter ilmlari fakulteti</p>
+                <p><i class="fas fa-graduation-cap"></i> <b>Yo'nalish:</b> Axborot tizimlari va texnologiyalari</p>
+                <p><i class="fas fa-bullseye"></i> <b>Maqsad:</b> IT ni yaxshi o‘rganib, kuchli dasturchi bo‘lish.</p>
             </div>
         </div>
     </section>
 
-    <section id="library">
-        <div class="content-box">
-            <h2>Mutolaaxona</h2>
-            <p>Kitoblar - ongimizning koinotiga ochilgan eshiklardir.</p>
-            <div class="grid-container">
-                <div class="grid-item">"Raqamli qal'a" - Dan Brown</div>
-                <div class="grid-item">"Deep Learning" - Ian Goodfellow</div>
-                <div class="grid-item">"Sapiens" - Yuval Noah Harari</div>
-            </div>
+    <section id="interests">
+        <div class="container">
+            <h2>Qiziqishlarim va Yoqtirgan narsalarim</h2>
+            <p>Mening asosiy qiziqishlarim yangi texnologiyalarni o'rganish, dasturlash orqali kreativ loyihalar yaratish va kitob mutolaa qilishdir.</p>
+            <p>Shuningdek, shirinliklar (ayniqsa Kinder!) va sayohat qilishni ham juda yoqtiraman.</p>
         </div>
     </section>
 
-    <section id="articles">
-        <div class="content-box">
-            <h2>Maqolalarim</h2>
-            <div class="grid-item" style="text-align: left;">
-                <h4>1. Sun'iy intellektning bugungi kuni</h4>
-                <p>AI hayotimizga qanday kirib kelayotgani haqida tahliliy maqola...</p>
+    <section id="gallery">
+        <div class="container">
+            <h2>Galereya</h2>
+            <div class="gallery">
+                <div class="gallery-item">Rasm 1</div>
+                <div class="gallery-item">Rasm 2</div>
+                <div class="gallery-item">Rasm 3</div>
+                <div class="gallery-item">Rasm 4</div>
             </div>
+            <p style="margin-top: 15px; font-size: 12px; color: #888;">(Rasmlarni yuklash uchun src qismiga link qo'shing)</p>
         </div>
     </section>
 
-    <section id="world">
-        <div class="content-box">
-            <h2>Mening dunyoim</h2>
-            <p>Bu yerda mening shaxsiy qiziqishlarim, foto xotiralarim va ijodiy namunalarim jamlangan.</p>
-            <div class="grid-container">
-                <div class="grid-item" style="height: 150px;">Galereya rasm o'rni</div>
-                <div class="grid-item" style="height: 150px;">Ijod namunasi</div>
-            </div>
+    <section id="music">
+        <div class="container">
+            <h2>Men yoqtirgan qo'shiqlar</h2>
+            <ul class="music-list">
+                <li><i class="fas fa-music"></i> Tanlangan tarona #1</li>
+                <li><i class="fas fa-music"></i> Sevimli musiqa #2</li>
+                <li><i class="fas fa-music"></i> Motivatsion qo'shiq #3</li>
+                <li><i class="fas fa-music"></i> Klassik asarlar...</li>
+            </ul>
         </div>
     </section>
 
     <section id="contact">
-        <div class="content-box">
-            <h2>Aloqa</h2>
-            <p>Mening koinotimga ulaning:</p>
-            <div class="social-links">
-                <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                <a href="mailto:gulirano@example.com" class="social-link"><i class="fas fa-envelope"></i></a>
-            </div>
+        <div class="container">
+            <h2>Men bilan bog'lanish</h2>
+            <a href="mailto:sadullayevagulirano06@gmail.com" class="contact-btn mail"><i class="fas fa-envelope"></i> Email</a>
+            <a href="https://t.me/baxtiyorovna11_01" class="contact-btn tg"><i class="fab fa-telegram-plane"></i> Telegram</a>
+            <a href="https://instagram.com/11._.yanvar_" class="contact-btn inst"><i class="fab fa-instagram"></i> Instagram</a>
         </div>
     </section>
 
-    <footer>
-        <p>© 2026 Sa‘dullayeva Gulira‘no Baxtiyorovna. Barcha huquqlar himoyalangan.</p>
-    </footer>
+    <p style="text-align: center; color: white; padding-bottom: 20px;">© 2026 Gulira'no Portfoliosi</p>
 
 </body>
 </html>
