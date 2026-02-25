@@ -1,79 +1,212 @@
-/* ALOQA */
-        .social-icons a {
-            font-size: 30px;
+𝔹𝕒𝕩𝕥𝕚𝕪𝕠𝕣𝕠𝕧𝕟𝕒, [25-02-2026 17:46]
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guli Portfolio | Maxsus Dizayn</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #ff007f; /* Neon pushti */
+            --glass: rgba(255, 255, 255, 0.1);
+            --text: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: #000;
+            color: var(--text);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* ORQA FON RASMI */
+        .background-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Bu yerda koinot/kindir uslubidagi rasm */
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://source.unsplash.com/featured/?space,galaxy,nature');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            filter: blur(3px);
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(15px);
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: flex;
+            gap: 25px;
+            z-index: 1000;
+            border: 1px solid var(--primary-color);
+            box-shadow: 0 0 20px var(--primary-color);
+        }
+
+        nav a {
             color: white;
-            margin: 0 15px;
+            text-decoration: none;
+            font-size: 20px;
+            transition: 0.4s;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+            transform: scale(1.3);
+        }
+
+        /* SECTIONS */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .glass-box {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 40px;
+            border-radius: 25px;
+            max-width: 800px;
+            width: 100%;
+            animation: slideUp 1s ease-out;
+        }
+
+        /* ANIMATSIYA */
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid var(--primary-color);
+            margin-bottom: 20px;
+            box-shadow: 0 0 25px var(--primary-color);
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 10px;
+            letter-spacing: 5px;
+            text-shadow: 0 0 10px var(--primary-color);
+        }
+
+        .tagline { font-weight: 300; font-size: 1.2rem; color: #ccc; }
+
+        /* GALEREYA */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .grid-item {
+
+𝔹𝕒𝕩𝕥𝕚𝕪𝕠𝕣𝕠𝕧𝕟𝕒, [25-02-2026 17:46]
+height: 150px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.1);
             transition: 0.3s;
         }
 
-        .social-icons a:hover { color: #ff758c; }
+        .grid-item:hover {
+            background: var(--primary-color);
+            color: black;
+            cursor: pointer;
+        }
+
+        /* ALOQA */
+        .social-btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 25px;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .social-btn:hover {
+            background: var(--primary-color);
+            box-shadow: 0 0 15px var(--primary-color);
+        }
 
     </style>
 </head>
 <body>
 
+    <div class="background-fixed"></div>
+
     <nav>
-        <a href="#home">Asosiy</a>
-        <a href="#about">Haqimda</a>
-        <a href="#skills">Ko'nikmalar</a>
-        <a href="#gallery">Galereya</a>
-        <a href="#contact">Aloqa</a>
+        <a href="#home" title="Asosiy"><i class="fas fa-home"></i></a>
+        <a href="#about" title="Haqimda"><i class="fas fa-user"></i></a>
+        <a href="#gallery" title="Galereya"><i class="fas fa-images"></i></a>
+        <a href="#contact" title="Aloqa"><i class="fas fa-envelope"></i></a>
     </nav>
 
     <section id="home">
-        <div class="container">
-            <img src="https://via.placeholder.com/150" alt="Guli" class="profile-pic">
-            <h1>Salom, Guli 🌸</h1>
-            <p>Xayrli kun! Bu mening zamonaviy animatsiyali portfoliom. Men ijodkor va dasturlashga qiziquvchi shaxsman.</p>
-            <a href="#about" class="btn">Men haqimda bilish</a>
+        <div class="glass-box">
+            <img src="https://via.placeholder.com/150" alt="Guli" class="profile-img">
+            <h1>GULI</h1>
+            <p class="tagline">Zamonaviy Web Sahifamga Xush Kelibsiz</p>
+            <p style="margin-top: 20px;">Men ijodkor dasturchi va dizaynermun.</p>
         </div>
     </section>
 
     <section id="about">
-        <div class="container">
-            <h2>Men haqimda 👤</h2>
-            <p>Men Guliman. Mening maqsadim zamonaviy texnologiyalarni o'rganish va chiroyli loyihalar yaratishdir. Bo'sh vaqtimda kitob o'qiyman va yangi bilimlar egallayman.</p>
-            <p>O'z ustimda ishlashni va doimo olg'a yurishni yoqtiraman.</p>
-        </div>
-    </section>
-
-    <section id="skills">
-        <div class="container">
-            <h2>Ko'nikmalarim 💻</h2>
-            <div class="skills-grid">
-                <div class="skill-item">HTML / CSS</div>
-                <div class="skill-item">JavaScript</div>
-                <div class="skill-item">Web Design</div>
-                <div class="skill-item">Python</div>
-                <div class="skill-item">Photoshop</div>
-            </div>
+        <div class="glass-box">
+            <h2>Men Haqimda</h2>
+            <p style="margin-top: 20px; font-size: 1.1rem;">
+                Men o'z sohamning ustasi bo'lishga intilaman. Bu sahifa orqali siz mening hayotim, 
+                qiziqishlarim va tajribam bilan tanishishingiz mumkin. <br><br>
+                Maqsadim: Dunyo bo'ylab sayohat qilish va texnologiya olamida yangilik yaratish.
+            </p>
         </div>
     </section>
 
     <section id="gallery">
-        <div class="container">
-            <h2>Galereya 📸</h2>
-            <div class="gallery">
-                <img src="https://picsum.photos/200/200?random=1" alt="Foto">
-                <img src="https://picsum.photos/200/200?random=2" alt="Foto">
-                <img src="https://picsum.photos/200/200?random=3" alt="Foto">
-                <img src="https://picsum.photos/200/200?random=4" alt="Foto">
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="container">
-            <h2>Men bilan bog'lanish 📞</h2>
-            <p>Savollaringiz yoki takliflaringiz bo'lsa, quyidagi tarmoqlar orqali yozishingiz mumkin:</p>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-telegram"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
-            </div>
-            <p style="margin-top: 40px; font-size: 12px; opacity: 0.6;">© 2026 Guli Portfoliosi</p>
-        </div>
-    </section>
-
-</body>
-</html>
+        <div class="glass-box">
+            <h2>Mening Galereyam</h2>
+            <div class="grid">
+                <div class="grid-item">Foto 1</div>
+                <div class="grid-item">Foto 2</div>
+                <div class="grid-item">Foto 3</div>
+                <div class="grid-item">Foto 4</div>
+                <div class="grid-item">Foto 5</div>
+                <div class="grid-item">Foto
