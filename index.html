@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guli | Shaxsiy sayt</title>
+<title>Guli | Shokoladli sayt</title>
 
 <style>
 *{
@@ -14,71 +14,71 @@ font-family: 'Segoe UI', sans-serif;
 }
 
 body{
-background: linear-gradient(-45deg,#ff9a9e,#fad0c4,#fbc2eb,#a6c1ee);
-background-size:400% 400%;
-animation: bg 10s ease infinite;
-color:white;
 scroll-behavior:smooth;
+background:url('https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?auto=format&fit=crop&w=1600&q=80');
+background-size:cover;
+background-attachment:fixed;
+background-position:center;
+color:#5a2a00;
 }
 
-@keyframes bg{
-0%{background-position:0% 50%}
-50%{background-position:100% 50%}
-100%{background-position:0% 50%}
+.overlay{
+background:rgba(255,255,255,0.85);
+min-height:100vh;
 }
 
 nav{
 position:fixed;
 width:100%;
 top:0;
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(10px);
 display:flex;
 justify-content:center;
 gap:40px;
 padding:20px;
+background:rgba(255,255,255,0.7);
+backdrop-filter:blur(10px);
 z-index:1000;
 }
 
 nav a{
-color:white;
 text-decoration:none;
+color:#5a2a00;
 font-weight:bold;
 transition:0.3s;
 }
 
 nav a:hover{
-color:#ffd700;
+color:#ff4d6d;
 }
 
 section{
-height:100vh;
+min-height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-padding:20px;
+padding:100px 20px 40px;
 }
 
 h1{
-font-size:50px;
+font-size:48px;
 margin-bottom:20px;
-animation:fade 2s ease;
+animation:fade 1.5s ease;
 }
 
 p{
+max-width:700px;
 font-size:20px;
-max-width:600px;
 }
 
 button{
 margin-top:30px;
-padding:15px 40px;
+padding:15px 35px;
 border:none;
 border-radius:30px;
-background:white;
-color:black;
+background:#ffb703;
+color:white;
 font-weight:bold;
 cursor:pointer;
 transition:0.3s;
@@ -86,82 +86,102 @@ transition:0.3s;
 
 button:hover{
 transform:scale(1.1);
-background:#ffd700;
-}
-
-@keyframes fade{
-from{opacity:0; transform:translateY(30px)}
-to{opacity:1; transform:translateY(0)}
+background:#fb8500;
 }
 
 .cards{
 display:flex;
 gap:30px;
-margin-top:40px;
 flex-wrap:wrap;
 justify-content:center;
+margin-top:40px;
 }
 
 .card{
-background:rgba(255,255,255,0.2);
+background:white;
 padding:30px;
+width:260px;
 border-radius:20px;
-width:250px;
-backdrop-filter:blur(10px);
+box-shadow:0 10px 20px rgba(0,0,0,0.1);
 transition:0.4s;
 }
 
 .card:hover{
 transform:translateY(-10px);
-background:rgba(255,255,255,0.4);
 }
 
 footer{
 text-align:center;
 padding:20px;
-background:rgba(0,0,0,0.6);
+background:rgba(255,255,255,0.8);
+}
+
+@keyframes fade{
+from{opacity:0; transform:translateY(20px)}
+to{opacity:1; transform:translateY(0)}
 }
 </style>
 </head>
 
 <body>
 
+<div class="overlay">
+
 <nav>
 <a href="#home">Bosh sahifa</a>
 <a href="#about">Men haqimda</a>
+<a href="#education">Ta'lim</a>
 <a href="#skills">Ko‘nikmalar</a>
+<a href="#gallery">Galereya</a>
 <a href="#contact">Aloqa</a>
 </nav>
 
 <section id="home">
-<h1>Salom Guli 🌸</h1>
-<p>Bu mening zamonaviy, animatsiyali, chiroyli shaxsiy saytim.</p>
+<h1>Salom Guli 🍫</h1>
+<p>Bu mening Kinder shokoladli, chiroyli va zamonaviy shaxsiy saytim.</p>
 <button onclick="document.getElementById('about').scrollIntoView()">Boshlash</button>
 </section>
 
 <section id="about">
 <h1>Men haqimda</h1>
-<p>Ismim Gulira'no. Axborot tizimlari va texnologiyalari yo‘nalishida o‘qiyman. IT va dizaynni yaxshi ko‘raman.</p>
+<p>Ismim Gulira'no. Axborot tizimlari va texnologiyalari yo‘nalishida tahsil olaman. IT va dizaynni yaxshi ko‘raman.</p>
+</section>
+
+<section id="education">
+<h1>Ta'lim</h1>
+<div class="cards">
+<div class="card">
+<h3>Universitet</h3>
+<p>Axborot tizimlari va texnologiyalari</p>
+</div>
+<div class="card">
+<h3>IT qiziqish</h3>
+<p>Web dizayn va dasturlash</p>
+</div>
+</div>
 </section>
 
 <section id="skills">
-<h1>Mening Ko‘nikmalarim</h1>
+<h1>Ko‘nikmalar</h1>
 <div class="cards">
 <div class="card">
 <h3>HTML</h3>
-<p>Veb sahifa tuzish</p>
+<p>Veb sahifa yaratish</p>
 </div>
-
 <div class="card">
 <h3>CSS</h3>
-<p>Chiroyli dizayn qilish</p>
+<p>Dizayn va animatsiya</p>
 </div>
-
 <div class="card">
-<h3>IT</h3>
-<p>Dasturlash va texnologiya</p>
+<h3>Texnologiya</h3>
+<p>IT sohasiga qiziqish</p>
 </div>
 </div>
+</section>
+
+<section id="gallery">
+<h1>Galereya</h1>
+<p>Bu yerga o‘zing rasmlaringni qo‘shishing mumkin 🍫</p>
 </section>
 
 <section id="contact">
@@ -172,8 +192,10 @@ background:rgba(0,0,0,0.6);
 </section>
 
 <footer>
-© 2026 Guli | Barcha huquqlar himoyalangan
+© 2026 Guli | Shokoladli sayt
 </footer>
+
+</div>
 
 </body>
 </html>
