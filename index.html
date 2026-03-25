@@ -1,104 +1,115 @@
-<!DOCTYPE html>
-<html lang="uz">
+<!DOCTYPE html><html lang="uz">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gulira'no Baxtiyorovna | Shaxsiy Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Gulirano Portfolio</title>
     <style>
-        * {
-            margin: 0; padding: 0; box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
         body {
-            /* ORQA FON: KINDER SHOKOLAD RASMI */
-            background: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)), 
-                        url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Kinder_Schokolade_Tafel.jpg/1200px-Kinder_Schokolade_Tafel.jpg') no-repeat center center fixed;
-            background-size: cover;
-            scroll-behavior: smooth;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+            background: #ffe6f0;
+        }nav {
+        background: #ff4d88;
+        padding: 15px;
+        text-align: center;
+        position: sticky;
+        top: 0;
+    }
+
+    nav a {
+        color: white;
+        margin: 15px;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    section {
+        padding: 50px;
+        min-height: 100vh;
+        text-align: center;
+    }
+
+    h1 {
+        color: #cc0066;
+    }
+
+    .gallery img {
+        width: 200px;
+        margin: 10px;
+        border-radius: 15px;
+        box-shadow: 0 0 10px gray;
+    }
+
+    .contact a {
+        display: block;
+        margin: 10px;
+        color: #cc0066;
+        font-size: 18px;
+        text-decoration: none;
+    }
+
+    /* Heart animation */
+    .heart {
+        position: fixed;
+        top: -10px;
+        color: red;
+        font-size: 20px;
+        animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+        to {
+            transform: translateY(100vh);
         }
+    }
+</style>
 
-        /* Navigatsiya menyusi */
-        nav {
-            position: fixed; top: 0; width: 100%;
-            background: #d32f2f; padding: 15px 0;
-            display: flex; justify-content: center; z-index: 1000;
-        }
-
-        nav a {
-            color: white; text-decoration: none; margin: 0 10px;
-            font-weight: 600; font-size: 13px; text-transform: uppercase;
-        }
-
-        section {
-            min-height: 100vh; display: flex; justify-content: center;
-            align-items: center; padding: 100px 20px;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px; border-radius: 30px;
-            max-width: 800px; width: 100%;
-            text-align: center; border: 3px solid #d32f2f;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-        }
-
-        /* Profil rasmi uslubi */
-        .profile-img {
-            width: 180px; height: 180px; border-radius: 50%;
-            border: 5px solid #d32f2f; margin-bottom: 20px;
-            object-fit: cover; background: #eee;
-        }
-
-        h1 { color: #d32f2f; margin-bottom: 10px; font-size: 24px; }
-        h2 { color: #d32f2f; margin-bottom: 20px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-
-        .info-text { text-align: left; line-height: 1.8; font-size: 16px; margin: 20px 0; }
-        .info-text b { color: #333; }
-        .info-text i { color: #d32f2f; width: 25px; }
-
-        /* Galereya */
-        .gallery-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px; margin-top: 20px;
-        }
-
-        .gallery-grid img {
-            width: 100%; height: 200px; object-fit: cover;
-            border-radius: 15px; border: 2px solid #eee;
-        }
-
-        /* Musiqa bo'limi */
-        .music-item {
-            background: #fff5f5; margin-bottom: 15px; padding: 15px;
-            border-radius: 20px; border: 1px solid #ffcccc;
-            display: flex; flex-direction: column; align-items: center; gap: 10px;
-        }
-        audio { width: 100%; }
-
-        /* Aloqa tugmalari */
-        .btn {
-            display: inline-block; padding: 12px 25px; margin: 10px;
-            border-radius: 50px; color: white; text-decoration: none;
-            font-weight: bold; width: 250px; transition: 0.3s;
-        }
-        .tg { background: #0088cc; } .ins { background: #e1306c; } .em { background: #d32f2f; }
-        .btn:hover { transform: scale(1.05); }
-
-    </style>
 </head>
-<body>
+<body><nav>
+    <a href="#home">Bosh sahifa</a>
+    <a href="#about">Qiziqishlarim</a>
+    <a href="#gallery">Galeriya</a>
+    <a href="#contact">Aloqa</a>
+</nav><section id="home">
+    <h1>Gulira'no Baxtiyorovna</h1>
+    <p><b>Manzil:</b> Qashqadaryo viloyati, Nishon tumani</p>
+    <p><b>O‘qish:</b> Qarshi davlat Universiteti</p>
+    <p>Matematika va kompyuter ilmlari fakulteti</p>
+    <p>Axborot tizimlari va texnologiyalari yo‘nalishi</p>
+    <p><b>Maqsad:</b> IT ni yaxshi o‘rganib, kuchli dasturchi bo‘lish</p>
+    <img src="home.jpg" width="250px">
+</section><section id="about">
+    <h1>Mening qiziqishlarim</h1>
+    <p>• Dasturlash</p>
+    <p>• Kitob o‘qish</p>
+    <p>• Rasm chizish</p>
+    <p>• Sayohat qilish</p>
+    <p>• Musiqa tinglash</p>
+</section><section id="gallery" class="gallery">
+    <h1>Galeriya</h1>
+    <img src="1.jpg">
+    <img src="2.jpg">
+    <img src="3.jpg">
+</section><section id="contact" class="contact">
+    <h1>Men bilan bog‘lanish</h1>
+    <a href="mailto:sadullayevagulirano06@gmail.com">Email</a>
+    <a href="https://t.me/baxtiyorovna11_01">Telegram</a>
+    <a href="https://instagram.com/_sadullayevag">Instagram</a>
+</section><script>
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(heart);
 
-    <nav>
-        <a href="#home">Bosh sahifa</a>
-        <a href="#interests">Qiziqishlar</a>
-        <a href="#gallery">Galereya</a>
-        <a href="#music">Qo'shiqlar</a>
-        <a href="#contact">Aloqa</a>
-    </nav>
+        setTimeout(() => {
+            heart.remove();
+        }, 5000);
+    }
 
-    <section id="home">
-        <div class="card">
-            <img src="https://i.ibb.co/jkFpYmJY/IMG-20260227-102133-447.jpg" alt="Gulira'no" class="profile-img">
-            <h1>Sa‘dullayeva Gulira‘no Baxtiyorovna</h1>
+    setInterval(createHeart, 300);
+</script></body>
+</html>
