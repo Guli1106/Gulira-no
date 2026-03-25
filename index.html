@@ -1,171 +1,1140 @@
-
 <!DOCTYPE html>
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gulira'no Baxtiyorovna | Shaxsiy Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Gulira‘no | Shaxsiy Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
+        /* Umumiy sozlamalar */
         * {
-            margin: 0; padding: 0; box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            /* ORQA FON: KINDER SHOKOLAD RASMI */
-            background: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)), 
-                        url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Kinder_Schokolade_Tafel.jpg/1200px-Kinder_Schokolade_Tafel.jpg') no-repeat center center fixed;
-            background-size: cover;
-            scroll-behavior: smooth;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            color: #333;
+            overflow-x: hidden;
+            min-height: 100vh;
         }
 
-        /* Navigatsiya menyusi */
+        /* Yurakchalar animatsiyasi */
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.6);
+            animation: animateHearts 10s linear infinite;
+            bottom: -150px;
+        }
+
+        @keyframes animateHearts {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Navigatsiya */
         nav {
-            position: fixed; top: 0; width: 100%;
-            background: #d32f2f; padding: 15px 0;
-            display: flex; justify-content: center; z-index: 1000;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         nav a {
-            color: white; text-decoration: none; margin: 0 10px;
-            font-weight: 600; font-size: 13px; text-transform: uppercase;
+            text-decoration: none;
+            color: #d63384;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: 0.3s;
         }
 
+        nav a:hover {
+            background: #d63384;
+            color: white;
+        }
+
+        /* Sahifalar */
         section {
-            min-height: 100vh; display: flex; justify-content: center;
-            align-items: center; padding: 100px 20px;
+            min-height: 100vh;
+            padding: 100px 20px 50px;
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.8s ease-in-out;
         }
 
-        .card {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px; border-radius: 30px;
-            max-width: 800px; width: 100%;
-            text-align: center; border: 3px solid #d32f2f;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        section.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Profil rasmi uslubi */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Profil rasmi */
         .profile-img {
-            width: 180px; height: 180px; border-radius: 50%;
-            border: 5px solid #d32f2f; margin-bottom: 20px;
-            object-fit: cover; background: #eee;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #d63384;
+            margin-bottom: 20px;
         }
-
-        h1 { color: #d32f2f; margin-bottom: 10px; font-size: 24px; }
-        h2 { color: #d32f2f; margin-bottom: 20px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-
-        .info-text { text-align: left; line-height: 1.8; font-size: 16px; margin: 20px 0; }
-        .info-text b { color: #333; }
-        .info-text i { color: #d32f2f; width: 25px; }
 
         /* Galereya */
         .gallery-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px; margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
         }
 
         .gallery-grid img {
-            width: 100%; height: 200px; object-fit: cover;
-            border-radius: 15px; border: 2px solid #eee;
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: 0.3s;
+            cursor: pointer;
         }
 
-        /* Musiqa bo'limi */
-        .music-item {
-            background: #fff5f5; margin-bottom: 15px; padding: 15px;
-            border-radius: 20px; border: 1px solid #ffcccc;
-            display: flex; flex-direction: column; align-items: center; gap: 10px;
-        }
-        audio { width: 100%; }
+        .gallery-grid img:hover { transform: scale(1.05); }
 
-        /* Aloqa tugmalari */
-        .btn {
-            display: inline-block; padding: 12px 25px; margin: 10px;
-            border-radius: 50px; color: white; text-decoration: none;
-            font-weight: bold; width: 250px; transition: 0.3s;
+        /* Kontakt */
+        .contact-links a {
+            display: block;
+            margin: 15px;
+            font-size: 1.2rem;
+            color: #d63384;
+            text-decoration: none;
+            transition: 0.3s;
         }
-        .tg { background: #0088cc; } .ins { background: #e1306c; } .em { background: #d32f2f; }
-        .btn:hover { transform: scale(1.05); }
 
+        .contact-links a:hover { transform: translateX(10px); color: #b02a6b; }
+
+        h2 { color: #d63384; margin-bottom: 20px; }
+        p { line-height: 1.6; font-size: 1.1rem; }
     </style>
 </head>
 <body>
 
+    <div class="hearts" id="hearts-container"></div>
+
     <nav>
-        <a href="#home">Bosh sahifa</a>
-        <a href="#interests">Qiziqishlar</a>
-        <a href="#gallery">Galereya</a>
-        <a href="#music">Qo'shiqlar</a>
-        <a href="#contact">Aloqa</a>
+        <a href="#" onclick="showPage('home')">Asosiy</a>
+        <a href="#" onclick="showPage('interests')">Qiziqishlar</a>
+        <a href="#" onclick="showPage('gallery')">Galereya</a>
+        <a href="#" onclick="showPage('contact')">Bog'lanish</a>
     </nav>
 
-    <section id="home">
-        <div class="card">
-            <img src="https://i.ibb.co/jkFpYmJY/IMG-20260227-102133-447.jpg" alt="Gulira'no" class="profile-img">
-            <h1>Sa‘dullayeva Gulira‘no Baxtiyorovna</h1>
-            <div class="info-text">
-<p><i class="fas fa-map-marker-alt"></i> <b>Manzil:</b> Qashqadaryo viloyati, Nishon tumani</p>
-                <p><i class="fas fa-university"></i> <b>O'qish:</b> Qarshi davlat Universiteti, Matematika va kompyuter ilmlari fakulteti</p>
-                <p><i class="fas fa-laptop-code"></i> <b>Yo'nalish:</b> Axborot tizimlari va texnologiyalari</p>
-                <p><i class="fas fa-bullseye"></i> <b>Maqsad:</b> IT ni yaxshi o‘rganib, yaxshi dasturchi bo‘lish.</p>
-            </div>
+    <section id="home" class="active">
+        <div class="container">
+            <img src="https://via.placeholder.com/180" alt="Gulira‘no" class="profile-img">
+            <h2>Sa‘dullayeva Gulira‘no Baxtiyorovna</h2>
+            <p><strong>Manzil:</strong> Qashqadaryo viloyati, Nishon tumani</p>
+            <p><strong>O‘qish:</strong> Qarshi davlat Universiteti, Matematika va kompyuter ilmlari fakulteti</p>
+            <p><strong>Yo‘nalish:</strong> Axborot tizimlari va texnologiyalari</p>
+            <p style="margin-top: 20px; font-style: italic;">"Maqsadim: IT sohasini mukammal o‘rganib, kuchli dasturchi bo‘lish va yurtimiz rivojiga hissa qo‘shish."</p>
         </div>
     </section>
 
     <section id="interests">
-        <div class="card">
-            <h2>Qiziqishlarim</h2>
-            <p style="font-size: 18px;">Dasturlash, mantiqiy masalalar yechish va yangi texnologiyalarni o‘rganishni yaxshi ko'raman. Bo'sh vaqtimda shirinliklar (ayniqsa Kinder!) va musiqa tinglash menga zavq bag'ishlaydi.</p>
+        <div class="container">
+            <h2>Mening qiziqishlarim</h2>
+            <ul style="list-style: none; text-align: left; display: inline-block;">
+                <li><i class="fas fa-code"></i> Dasturlash (Python, Web texnologiyalar)</li>
+                <li><i class="fas fa-calculator"></i> Matematik masalalar yechish</li>
+                <li><i class="fas fa-book"></i> Yangi texnologiyalarni o‘rganish</li>
+                <li><i class="fas fa-music"></i> Arab musiqalarini tinglash</li>
+            </ul>
         </div>
     </section>
 
     <section id="gallery">
-        <div class="card">
-            <h2>Mening Galeriyam</h2>
+        <div class="container">
+            <h2>Galereya</h2>
             <div class="gallery-grid">
-                <img src="https://i.ibb.co/7xxggVkn/IMG-20260227-102130-996.jpg" alt="g">
-                <img src="https://i.ibb.co/27Vj7SfW/IMG-20260227-102131-736.jpg" alt="g">
-                <img src="https://i.ibb.co/XnysYmw/IMG-20260227-102131-852.jpg" alt="g">
-                <img src="https://i.ibb.co/7xxggVkn/IMG-20260227-102130-996.jpg" alt="g">
-            </div>
-        </div>
-    </section>
-
-    <section id="music">
-        <div class="card">
-            <h2>Sevimli Qo'shiqlarim 🎵</h2>
-            
-            <div class="music-item">
-                <span>1. Nasini el Donya</span>
-                <audio controls><source src="nasini.mp3" type="audio/mpeg"></audio>
-            </div>
-
-            <div class="music-item">
-                <span>2. Osad Einy</span>
-                <audio controls><source src="osad.mp3" type="audio/mpeg"></audio>
-            </div>
-
-            <div class="music-item">
-                <span>3. Cyrine Abdelnour (Speed up)</span>
-                <audio controls><source src="لو_بص.mp3" type="audio/mpeg"></audio>
-            </div>
-
-            <div class="music-item">
-                <span>4. Hobbo Ganna (Sherine)</span>
-                <audio controls><source src="hobbo.mp3" type="audio/mpeg"></audio>
+                <img src="https://via.placeholder.com/300x300?text=Rasm+1" alt="Galereya 1">
+                <img src="https://via.placeholder.com/300x300?text=Rasm+2" alt="Galereya 2">
+                <img src="https://via.placeholder.com/300x300?text=Rasm+3" alt="Galereya 3">
+                <img src="https://via.placeholder.com/300x300?text=Rasm+4" alt="Galereya 4">
             </div>
         </div>
     </section>
 
     <section id="contact">
-        <div class="card">
-            <h2>Aloqa operatori</h2>
-            <p>Men bilan bog'lanish uchun:</p>
-            <a href="mailto:sadullayevagulirano06@gmail.com" class="btn em"><i class="fas fa-envelope"></i> Email</a>
-            <a href="https://t.me/baxtiyorovna11_01" class="btn tg"><i class="fab fa-telegram-plane"></i> Telegram</a>
-            <a href="https://instagram.com/11._.yanvar_" class="btn ins"><i class="fab fa-instagram"></i> Instagram</a>
+        <div class="container">
+            <h2>Men bilan bog'lanish</h2>
+            <div class="contact-links">
+                <a href="mailto:sadullayevagulirano06@gmail.com"><i class="fas fa-envelope"></i> sadullayevagulirano06@gmail.com</a>
+                <a href="https://t.me/baxtiyorovna11_01" target="_blank"><i class="fab fa-telegram"></i> @baxtiyorovna11_01</a>
+                <a href="https://instagram.com/_sadullayevag" target="_blank"><i class="fab fa-instagram"></i> _sadullayevag</a>
+            </div>
         </div>
     </section>
 
+    <script>
+        // Sahifalarni almashtirish funksiyasi
+        function showPage(pageId) {
+            document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        // Yurakchalar yaratish funksiyasi
+        function createHeart() {
+            const container = document.getElementById('hearts-container');
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            heart.style.duration = Math.random() * 5 + 5 + 's';
+            container.appendChild(heart);
+
+            setTimeout(() => { heart.remove(); }, 10000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gulira‘no | Shaxsiy Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Umumiy sozlamalar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            color: #333;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Yurakchalar animatsiyasi */
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.6);
+            animation: animateHearts 10s linear infinite;
+            bottom: -150px;
+        }
+
+        @keyframes animateHearts {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Navigatsiya */
+        nav {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #d63384;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background: #d63384;
+            color: white;
+        }
+
+        /* Sahifalar */
+        section {
+            min-height: 100vh;
+            padding: 100px 20px 50px;
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        section.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Profil rasmi */
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #d63384;
+            margin-bottom: 20px;
+        }
+
+        /* Galereya */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery-grid img:hover { transform: scale(1.05); }
+
+        /* Kontakt */
+        .contact-links a {
+            display: block;
+            margin: 15px;
+            font-size: 1.2rem;
+            color: #d63384;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .contact-links a:hover { transform: translateX(10px); color: #b02a6b; }
+
+        h2 { color: #d63384; margin-bottom: 20px; }
+        p { line-height: 1.6; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+
+    <div class="hearts" id="hearts-container"></div>
+
+    <nav>
+        <a href="#" onclick="showPage('home')">Asosiy</a>
+        <a href="#" onclick="showPage('interests')">Qiziqishlar</a>
+        <a href="#" onclick="showPage('gallery')">Galereya</a>
+        <a href="#" onclick="showPage('contact')">Bog'lanish</a>
+    </nav>
+
+    <section id="home" class="active">
+        <div class="container">
+            <img src="https://via.placeholder.com/180" alt="Gulira‘no" class="profile-img">
+            <h2>Sa‘dullayeva Gulira‘no Baxtiyorovna</h2>
+            <p><strong>Manzil:</strong> Qashqadaryo viloyati, Nishon tumani</p>
+            <p><strong>O‘qish:</strong> Qarshi davlat Universiteti, Matematika va kompyuter ilmlari fakulteti</p>
+            <p><strong>Yo‘nalish:</strong> Axborot tizimlari va texnologiyalari</p>
+            <p style="margin-top: 20px; font-style: italic;">"Maqsadim: IT sohasini mukammal o‘rganib, kuchli dasturchi bo‘lish va yurtimiz rivojiga hissa qo‘shish."</p>
+        </div>
+    </section>
+
+    <section id="interests">
+        <div class="container">
+            <h2>Mening qiziqishlarim</h2>
+            <ul style="list-style: none; text-align: left; display: inline-block;">
+                <li><i class="fas fa-code"></i> Dasturlash (Python, Web texnologiyalar)</li>
+                <li><i class="fas fa-calculator"></i> Matematik masalalar yechish</li>
+                <li><i class="fas fa-book"></i> Yangi texnologiyalarni o‘rganish</li>
+                <li><i class="fas fa-music"></i> Arab musiqalarini tinglash</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="container">
+            <h2>Galereya</h2>
+            <div class="gallery-grid">
+                <img src="https://via.placeholder.com/300x300?text=Rasm+1" alt="Galereya 1">
+                <img src="https://via.placeholder.com/300x300?text=Rasm+2" alt="Galereya 2">
+                <img src="https://via.placeholder.com/300x300?text=Rasm+3" alt="Galereya 3">
+                <img src="https://via.placeholder.com/300x300?text=Rasm+4" alt="Galereya 4">
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Men bilan bog'lanish</h2>
+            <div class="contact-links">
+                <a href="mailto:sadullayevagulirano06@gmail.com"><i class="fas fa-envelope"></i> sadullayevagulirano06@gmail.com</a>
+                <a href="https://t.me/baxtiyorovna11_01" target="_blank"><i class="fab fa-telegram"></i> @baxtiyorovna11_01</a>
+                <a href="https://instagram.com/_sadullayevag" target="_blank"><i class="fab fa-instagram"></i> _sadullayevag</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Sahifalarni almashtirish funksiyasi
+        function showPage(pageId) {
+            document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        // Yurakchalar yaratish funksiyasi
+        function createHeart() {
+            const container = document.getElementById('hearts-container');
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            heart.style.duration = Math.random() * 5 + 5 + 's';
+            container.appendChild(heart);
+
+            setTimeout(() => { heart.remove(); }, 10000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gulira‘no | Shaxsiy Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Umumiy sozlamalar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            color: #333;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Yurakchalar animatsiyasi */
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.6);
+            animation: animateHearts 10s linear infinite;
+            bottom: -150px;
+        }
+
+        @keyframes animateHearts {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Navigatsiya */
+        nav {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #d63384;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background: #d63384;
+            color: white;
+        }
+
+        /* Sahifalar */
+        section {
+            min-height: 100vh;
+            padding: 100px 20px 50px;
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        section.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Profil rasmi */
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #d63384;
+            margin-bottom: 20px;
+        }
+
+        /* Galereya */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery-grid img:hover { transform: scale(1.05); }
+
+        /* Kontakt */
+        .contact-links a {
+            display: block;
+            margin: 15px;
+            font-size: 1.2rem;
+            color: #d63384;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .contact-links a:hover { transform: translateX(10px); color: #b02a6b; }
+
+        h2 { color: #d63384; margin-bottom: 20px; }
+        p { line-height: 1.6; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+
+    <div class="hearts" id="hearts-container"></div>
+
+    <nav>
+        <a href="#" onclick="showPage('home')">Asosiy</a>
+        <a href="#" onclick="showPage('interests')">Qiziqishlar</a>
+        <a href="#" onclick="showPage('gallery')">Galereya</a>
+        <a href="#" onclick="showPage('contact')">Bog'lanish</a>
+    </nav>
+
+    <section id="home" class="active">
+        <div class="container">
+            <img src="https://via.placeholder.com/180" alt="Gulira‘no" class="profile-img">
+            <h2>Sa‘dullayeva Gulira‘no Baxtiyorovna</h2>
+            <p><strong>Manzil:</strong> Qashqadaryo viloyati, Nishon tumani</p>
+            <p><strong>O‘qish:</strong> Qarshi davlat Universiteti, Matematika va kompyuter ilmlari fakulteti</p>
+            <p><strong>Yo‘nalish:</strong> Axborot tizimlari va texnologiyalari</p>
+            <p style="margin-top: 20px; font-style: italic;">"Maqsadim: IT sohasini mukammal o‘rganib, kuchli dasturchi bo‘lish va yurtimiz rivojiga hissa qo‘shish."</p>
+        </div>
+    </section>
+
+    <section id="interests">
+        <div class="container">
+            <h2>Mening qiziqishlarim</h2>
+            <ul style="list-style: none; text-align: left; display: inline-block;">
+                <li><i class="fas fa-code"></i> Dasturlash (Python, Web texnologiyalar)</li>
+                <li><i class="fas fa-calculator"></i> Matematik masalalar yechish</li>
+                <li><i class="fas fa-book"></i> Yangi texnologiyalarni o‘rganish</li>
+                <li><i class="fas fa-music"></i> Arab musiqalarini tinglash</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="container">
+            <h2>Galereya</h2>
+            <div class="gallery-grid">
+                <img src="https://via.placeholder.com/300x300?text=Rasm+1" alt="Galereya 1">
+                <img src="https://via.placeholder.com/300x300?text=Rasm+2" alt="Galereya 2">
+                <img src="https://via.placeholder.com/300x300?text=Rasm+3" alt="Galereya 3">
+                <img src="https://via.placeholder.com/300x300?text=Rasm+4" alt="Galereya 4">
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Men bilan bog'lanish</h2>
+            <div class="contact-links">
+                <a href="mailto:sadullayevagulirano06@gmail.com"><i class="fas fa-envelope"></i> sadullayevagulirano06@gmail.com</a>
+                <a href="https://t.me/baxtiyorovna11_01" target="_blank"><i class="fab fa-telegram"></i> @baxtiyorovna11_01</a>
+                <a href="https://instagram.com/_sadullayevag" target="_blank"><i class="fab fa-instagram"></i> _sadullayevag</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Sahifalarni almashtirish funksiyasi
+        function showPage(pageId) {
+            document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        // Yurakchalar yaratish funksiyasi
+        function createHeart() {
+            const container = document.getElementById('hearts-container');
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            heart.style.duration = Math.random() * 5 + 5 + 's';
+            container.appendChild(heart);
+
+            setTimeout(() => { heart.remove(); }, 10000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gulira‘no | Shaxsiy Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Umumiy sozlamalar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            color: #333;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Yurakchalar animatsiyasi */
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.6);
+            animation: animateHearts 10s linear infinite;
+            bottom: -150px;
+        }
+
+        @keyframes animateHearts {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Navigatsiya */
+        nav {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #d63384;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background: #d63384;
+            color: white;
+        }
+
+        /* Sahifalar */
+        section {
+            min-height: 100vh;
+            padding: 100px 20px 50px;
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        section.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Profil rasmi */
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #d63384;
+            margin-bottom: 20px;
+        }
+
+        /* Galereya */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery-grid img:hover { transform: scale(1.05); }
+
+        /* Kontakt */
+        .contact-links a {
+            display: block;
+            margin: 15px;
+            font-size: 1.2rem;
+            color: #d63384;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .contact-links a:hover { transform: translateX(10px); color: #b02a6b; }
+
+        h2 { color: #d63384; margin-bottom: 20px; }
+        p { line-height: 1.6; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+
+    <div class="hearts" id="hearts-container"></div>
+
+    <nav>
+        <a href="#" onclick="showPage('home')">Asosiy</a>
+        <a href="#" onclick="showPage('interests')">Qiziqishlar</a>
+        <a href="#" onclick="showPage('gallery')">Galereya</a>
+        <a href="#" onclick="showPage('contact')">Bog'lanish</a>
+    </nav>
+
+    <section id="home" class="active">
+        <div class="container">
+            <img src="https://via.placeholder.com/180" alt="Gulira‘no" class="profile-img">
+            <h2>Sa‘dullayeva Gulira‘no Baxtiyorovna</h2>
+            <p><strong>Manzil:</strong> Qashqadaryo viloyati, Nishon tumani</p>
+            <p><strong>O‘qish:</strong> Qarshi davlat Universiteti, Matematika va kompyuter ilmlari fakulteti</p>
+            <p><strong>Yo‘nalish:</strong> Axborot tizimlari va texnologiyalari</p>
+            <p style="margin-top: 20px; font-style: italic;">"Maqsadim: IT sohasini mukammal o‘rganib, kuchli dasturchi bo‘lish va yurtimiz rivojiga hissa qo‘shish."</p>
+        </div>
+    </section>
+
+    <section id="interests">
+        <div class="container">
+            <h2>Mening qiziqishlarim</h2>
+            <ul style="list-style: none; text-align: left; display: inline-block;">
+                <li><i class="fas fa-code"></i> Dasturlash (Python, Web texnologiyalar)</li>
+                <li><i class="fas fa-calculator"></i> Matematik masalalar yechish</li>
+                <li><i class="fas fa-book"></i> Yangi texnologiyalarni o‘rganish</li>
+                <li><i class="fas fa-music"></i> Arab musiqalarini tinglash</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="container">
+            <h2>Galereya</h2>
+            <div class="gallery-grid">
+                <img src="https://via.placeholder.com/300x300?text=Rasm+1" alt="Galereya 1">
+                <img src="https://via.placeholder.com/300x300?text=Rasm+2" alt="Galereya 2">
+                <img src="https://via.placeholder.com/300x300?text=Rasm+3" alt="Galereya 3">
+                <img src="https://via.placeholder.com/300x300?text=Rasm+4" alt="Galereya 4">
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Men bilan bog'lanish</h2>
+            <div class="contact-links">
+                <a href="mailto:sadullayevagulirano06@gmail.com"><i class="fas fa-envelope"></i> sadullayevagulirano06@gmail.com</a>
+                <a href="https://t.me/baxtiyorovna11_01" target="_blank"><i class="fab fa-telegram"></i> @baxtiyorovna11_01</a>
+                <a href="https://instagram.com/_sadullayevag" target="_blank"><i class="fab fa-instagram"></i> _sadullayevag</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Sahifalarni almashtirish funksiyasi
+        function showPage(pageId) {
+            document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        // Yurakchalar yaratish funksiyasi
+        function createHeart() {
+            const container = document.getElementById('hearts-container');
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            heart.style.duration = Math.random() * 5 + 5 + 's';
+            container.appendChild(heart);
+
+            setTimeout(() => { heart.remove(); }, 10000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gulira‘no | Shaxsiy Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Umumiy sozlamalar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            color: #333;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Yurakchalar animatsiyasi */
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.6);
+            animation: animateHearts 10s linear infinite;
+            bottom: -150px;
+        }
+
+        @keyframes animateHearts {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Navigatsiya */
+        nav {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #d63384;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background: #d63384;
+            color: white;
+        }
+
+        /* Sahifalar */
+        section {
+            min-height: 100vh;
+            padding: 100px 20px 50px;
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        section.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Profil rasmi */
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #d63384;
+            margin-bottom: 20px;
+        }
+
+        /* Galereya */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery-grid img:hover { transform: scale(1.05); }
+
+        /* Kontakt */
+        .contact-links a {
+            display: block;
+            margin: 15px;
+            font-size: 1.2rem;
+            color: #d63384;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .contact-links a:hover { transform: translateX(10px); color: #b02a6b; }
+
+        h2 { color: #d63384; margin-bottom: 20px; }
+        p { line-height: 1.6; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+
+    <div class="hearts" id="hearts-container"></div>
+
+    <nav>
+        <a href="#" onclick="showPage('home')">Asosiy</a>
+        <a href="#" onclick="showPage('interests')">Qiziqishlar</a>
+        <a href="#" onclick="showPage('gallery')">Galereya</a>
+        <a href="#" onclick="showPage('contact')">Bog'lanish</a>
+    </nav>
+
+    <section id="home" class="active">
+        <div class="container">
+            <img src="https://via.placeholder.com/180" alt="Gulira‘no" class="profile-img">
+            <h2>Sa‘dullayeva Gulira‘no Baxtiyorovna</h2>
+            <p><strong>Manzil:</strong> Qashqadaryo viloyati, Nishon tumani</p>
+            <p><strong>O‘qish:</strong> Qarshi davlat Universiteti, Matematika va kompyuter ilmlari fakulteti</p>
+            <p><strong>Yo‘nalish:</strong> Axborot tizimlari va texnologiyalari</p>
+            <p style="margin-top: 20px; font-style: italic;">"Maqsadim: IT sohasini mukammal o‘rganib, kuchli dasturchi bo‘lish va yurtimiz rivojiga hissa qo‘shish."</p>
+        </div>
+    </section>
+
+    <section id="interests">
+        <div class="container">
+            <h2>Mening qiziqishlarim</h2>
+            <ul style="list-style: none; text-align: left; display: inline-block;">
+                <li><i class="fas fa-code"></i> Dasturlash (Python, Web texnologiyalar)</li>
+                <li><i class="fas fa-calculator"></i> Matematik masalalar yechish</li>
+                <li><i class="fas fa-book"></i> Yangi texnologiyalarni o‘rganish</li>
+                <li><i class="fas fa-music"></i> Arab musiqalarini tinglash</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="container">
+            <h2>Galereya</h2>
+            <div class="gallery-grid">
+                <img src="https://via.placeholder.com/300x300?text=Rasm+1" alt="Galereya 1">
+                <img src="https://via.placeholder.com/300x300?text=Rasm+2" alt="Galereya 2">
+                <img src="https://via.placeholder.com/300x300?text=Rasm+3" alt="Galereya 3">
+                <img src="https://via.placeholder.com/300x300?text=Rasm+4" alt="Galereya 4">
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Men bilan bog'lanish</h2>
+            <div class="contact-links">
+                <a href="mailto:sadullayevagulirano06@gmail.com"><i class="fas fa-envelope"></i> sadullayevagulirano06@gmail.com</a>
+                <a href="https://t.me/baxtiyorovna11_01" target="_blank"><i class="fab fa-telegram"></i> @baxtiyorovna11_01</a>
+                <a href="https://instagram.com/_sadullayevag" target="_blank"><i class="fab fa-instagram"></i> _sadullayevag</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Sahifalarni almashtirish funksiyasi
+        function showPage(pageId) {
+            document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        // Yurakchalar yaratish funksiyasi
+        function createHeart() {
+            const container = document.getElementById('hearts-container');
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            heart.style.duration = Math.random() * 5 + 5 + 's';
+            container.appendChild(heart);
+
+            setTimeout(() => { heart.remove(); }, 10000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
 </body>
 </html>
